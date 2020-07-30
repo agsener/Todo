@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+
+    <base href="/">
+    <title>TODO Application</title>
+
+    <link href="/3rd/bootstrap-4.5.0-dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="/3rd/font-awesome-4.7.0/css/font-awesome.min.css" rel="stylesheet">
+    <link href="/3rd/sweetalert2/sweetalert2.min.css" rel="stylesheet">
+    <link href="/app/css/app.css" rel="stylesheet">
+</head>
+<body>
+
+<div class="d-flex flex-column flex-md-row align-items-center p-3 px-md-4 mb-3 bg-white border-bottom box-shadow">
+    <h5 class="my-0 mr-md-auto font-weight-normal">BEAM T.</h5>
+    <nav class="my-2 my-md-0 mr-md-3">
+        <a class="p-2 text-dark" href="/dashboard">Dashboard</a>
+        <a class="p-2 text-dark" href="/tasks">Tasks</a>
+        <a class="p-2 text-dark" href="#">Support</a>
+        <a class="p-2 text-dark" href="#">Pricing</a>
+    </nav>
+    <a class="btn btn-outline-primary" href="#">Sign up</a>
+</div>
+
+<div class="content" ng-app="app" ng-controller="AuthController">
+    <a href="#" ng-click="logout()" class="float-right" >Logout</a>
+    <div ng-view=""></div>
+</div>
+
+<script src="/3rd/angular-1.8.0/angular.min.js"></script>
+<script src="/3rd/angular-1.8.0/angular-resource.min.js"></script>
+<script src="/3rd/angular-1.8.0/angular-route.min.js"></script>
+<script src="/3rd/other/ui-bootstrap-tpls-3.0.6.min.js"></script>
+<script src="/3rd/sweetalert2/sweetalert2.min.js"></script>
+
+<script src="/app/js/app.module.js"></script>
+<script src="/app/js/dashboard.module.js"></script>
+<script src="/app/js/dashboard/dashboard.component.js"></script>
+
+<script src="/app/js/login.module.js"></script>
+<script src="/app/js/login/login.component.js"></script>
+
+<script src="/app/js/task.module.js"></script>
+<script src="/app/js/task/task-list.component.js"></script>
+<script src="app/js/task/task-edit.component.js"></script>
+
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

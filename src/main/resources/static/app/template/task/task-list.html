@@ -1,0 +1,93 @@
+<!--<ul ng-repeat="task in tasks" ng-dblclick="addTask(task)">
+    <li>{{task.title}}</li>
+    <p>{{task.description}}</p>
+    <button class="btn btn-danger" ng-click="removeTask(task.id, $index)">X</button>
+</ul>
+
+<button class="btn btn-success" ng-click="addTask()">+</button>
+<p class="small">Total of {{tasks.length}} tasks.</p>-->
+
+
+<div>
+    <button class="btn btn-success" ng-click="newTask()"><i class="fa fa-plus"></i></button>
+
+    <div class="custom-control custom-switch">
+        <input type="checkbox" class="custom-control-input" id="customSwitch1" ng-model="showDone">
+        <label class="custom-control-label switch" for="customSwitch1">Show done items</label>
+    </div>
+</div>
+
+<div class="row">
+    <div class="lane col-4">
+        <legend>Today's TODOs</legend>
+        <ul class="task-list list-unstyled">
+            <li ng-repeat="task in tasks" ng-if="showDone || task.done">
+                <task ng-model="task" deletable="true" checked = "true" on-delete="taskDeleted(id, $index)"/>
+            </li>
+
+        </ul>
+
+
+    </div>
+
+    <div class="lane col-4">
+        <legend>Previous TODOs</legend>
+
+
+    </div>
+
+    <div class="lane col-4">
+        <legend>Next TODOs</legend>
+        <ul class="list-unstyled">
+            <li ng-repeat="task in tasks" ng-model="ch" ng-init="ch=task.done">
+                <task ng-model="task" deletable="false" checked="!ch">
+            </li>
+        </ul>
+    </div>
+</div>
+
+
+<style>
+
+
+    div.lane {
+        border-right: 1px solid #ddd;
+        height: 100vh;
+        padding: 45px 15px 45px 15px;
+    }
+
+    .task-list {
+        margin-top: 25px;
+    }
+
+    .switch {
+        margin-left: 10px;
+    }
+
+
+</style>
+
+
+<!--
+<div>
+    <h2>Today's Works</h2>
+    <ul class="col-4 unstyled">
+        <li class="row" ng-repeat="task in tasks">
+            <div class="col">
+                <div class="row">
+                    <input class="col-1 mt-2" type="checkbox" ng-model="task.done">
+                    <span class="col-5 done-{{task.done}}">{{task.title}}</span>
+                    <button class="col-1 buttonDelete" ng-click="removeTask(task.id, $index)">x</button>
+                </div>
+                <div class="row">
+                    <span class="offset-1 done-{{task.done}}">{{task.description}}</span>
+                </div>
+            </div>
+        </li>
+    </ul>
+</div>
+
+<button class="btn btn-success" ng-click="addTask()">+</button>
+<p class="small">Total of {{tasks.length}} tasks.</p>
+-->
+

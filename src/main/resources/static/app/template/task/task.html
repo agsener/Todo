@@ -1,0 +1,14 @@
+<div class="d-flex" ng-if="checked">
+    <div ng-class="{'done-true': task.done}">
+        <div class="form-check" style="text-decoration: inherit">
+            <input type="checkbox" class="form-check-input" ng-model="task.done"
+                   ng-click="toggleStatus(task)"
+                   ng-model-options="{debounce: 100}">
+            <label class="form-check-label" style="text-decoration: inherit">{{task.title}}</label>
+        </div>
+        <p class="small">{{task.description}}</p>
+    </div>
+    <div class="col-1" ng-if="deletable">
+        <i class="fa fa-trash btn-danger hand" ng-click="removeTask(task.id)"></i>
+    </div>
+</div>
