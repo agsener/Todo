@@ -24,6 +24,7 @@ public class TaskController {
     @GetMapping("list")
     private List<Task> findAll(HttpSession session) {
         if(session.getAttribute(LOGGEDIN_USER) != null) {
+            User denemeUser = (User) session.getAttribute(LOGGEDIN_USER);
             return taskService.findByUser((User) session.getAttribute(LOGGEDIN_USER));
         }else{
             return Arrays.asList();

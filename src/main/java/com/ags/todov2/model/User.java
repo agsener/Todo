@@ -18,4 +18,16 @@ public class User extends Base {
     @Getter
     @Setter
     private String password;
+
+    @Getter
+    @Setter
+    private String name;
+
+    @Getter
+    @Setter
+    private String surname;
+
+    @Getter
+    @Setter
+    private String profilPictureUuid;
 }

@@ -4,7 +4,8 @@ var app = angular.module("app",
         'ui.bootstrap',
         "task",
         "dashboard",
-        "login"
+        "login",
+        "profile"
     ]);
 
 app.config(["$routeProvider", "$locationProvider",
@@ -15,6 +16,9 @@ app.config(["$routeProvider", "$locationProvider",
         $routeProvider
             .when("/", {
                 template: "<login></login>"
+            })
+            .when("/profile", {
+                template: "<profile></profile>"
             })
             .when("/tasks", {
                 template: "<task-list></task-list>"

@@ -2,15 +2,20 @@ package com.ags.todov2.controller;
 
 import com.ags.todov2.dto.GenericResponse;
 import com.ags.todov2.dto.LoginDto;
+import com.ags.todov2.model.Task;
 import com.ags.todov2.model.User;
 import com.ags.todov2.service.UserService;
+import org.apache.commons.io.FileUtils;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import javax.servlet.http.HttpSession;
+
+import java.io.File;
+import java.io.IOException;
+import java.util.Arrays;
+import java.util.Base64;
+import java.util.List;
 
 import static com.ags.todov2.controller.TaskController.LOGGEDIN_USER;
 
@@ -22,23 +27,46 @@ public class UserController {
     @Autowired
     private UserService userService;
 
+    @GetMapping("profile")
+    private User findUser(HttpSession httpSession) {
+        User user = (User) httpSession.getAttribute(LOGGEDIN_USER);
+        return user;
+    }
+
+    @GetMapping("{uuid}")
+    private GenericResponse convertUuidToBase64(@PathVariable("uuid") String uuid){
+
+        byte[] fileContent = new byte[0];
+        try {
+            fileContent = FileUtils.readFileToByteArray(new File("C:\\Users\\ahmet.sener\\IdeaProjects\\todov2\\src\\main\\resources\\static\\3rd\\profilPictures\\" + uuid + ".jpg"));
+        } catch (IOException e) {
+            e.printStackTrace();
+            return new GenericResponse()
+                    .setCode(20);
+        }
+        String encodedString = Base64.getEncoder().encodeToString(fileContent);
+        return new GenericResponse()
+                .setCode(0)
+                .setMessage(encodedString);
+    }
+
     @PostMapping
     private GenericResponse login(@RequestBody LoginDto request,
                                   HttpSession session) {
         User user = userService.login(request.getUsername(), request.getPassword());
 
-        if(user != null){
+        if (user != null) {
             session.setAttribute(LOGGEDIN_USER, user);
             return new GenericResponse()
                     .setCode(0);
-        }else{
+        } else {
             return new GenericResponse()
                     .setCode(50);
         }
     }
 
     @PostMapping("logout")
-    private GenericResponse logout(HttpSession session){
+    private GenericResponse logout(HttpSession session) {
         session.removeAttribute(LOGGEDIN_USER);
         return new GenericResponse()
                 .setCode(0);
