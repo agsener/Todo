@@ -77,6 +77,7 @@ public class UserController {
     private GenericResponse update(@RequestBody UserDto request, HttpSession httpSession) {
         User updatedUser = userService.save(request, httpSession);
         if (updatedUser != null) {
+            httpSession.setAttribute(LOGGEDIN_USER, updatedUser);
             return new GenericResponse()
                     .setCode(0);
         } else {
