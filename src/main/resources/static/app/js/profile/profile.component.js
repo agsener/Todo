@@ -3,14 +3,32 @@ angular.module("profile")
         templateUrl: "/app/template/profile/profile.html",
         controller: function ($scope, ProfileApi) {
 
+            var user = "";
+            var base64 = "";
+
+            $scope.profileFunc = function () {
+                userDto = {
+                    username: user.username,
+                    name: user.name,
+                    surname: user.surname,
+                }
+                ProfileApi.updateUser(userDto, function (response) {
+                    if (response.code === 0) {
+                        swal.fire("Saved");
+
+
+
+
+                    }
+                })
+            };
+
             $scope.changePhoto = function () {
                 console.log("cift tiklaninca calisan fonk");
-                console.log($scope.myFile)
+
             };
 
             $scope.init = function () {
-                var user = "";
-                var base64 = "";
                 ProfileApi.userProfile(function (response) {
                     user = response;
                     console.log(user);

@@ -6,7 +6,7 @@ angular.module("login")
             $scope.loginFunc = function(){
                 AuthApi.login($scope.loginDto, function (response) {
                     console.log("id: " + response.message);
-                    if(response.code == 0){
+                    if(response.code === 0){
                         $location.path("/tasks");
                     }else{
                         switch (response.code) {

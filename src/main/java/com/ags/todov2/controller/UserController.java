@@ -2,6 +2,7 @@ package com.ags.todov2.controller;
 
 import com.ags.todov2.dto.GenericResponse;
 import com.ags.todov2.dto.LoginDto;
+import com.ags.todov2.dto.UserDto;
 import com.ags.todov2.model.Task;
 import com.ags.todov2.model.User;
 import com.ags.todov2.service.UserService;
@@ -34,7 +35,7 @@ public class UserController {
     }
 
     @GetMapping("{uuid}")
-    private GenericResponse convertUuidToBase64(@PathVariable("uuid") String uuid){
+    private GenericResponse convertUuidToBase64(@PathVariable("uuid") String uuid) {
 
         byte[] fileContent = new byte[0];
         try {
@@ -66,10 +67,21 @@ public class UserController {
     }
 
     @PostMapping("logout")
-    private GenericResponse logout(HttpSession session) {
-        session.removeAttribute(LOGGEDIN_USER);
+    private GenericResponse logout(HttpSession httpSession) {
+        httpSession.removeAttribute(LOGGEDIN_USER);
         return new GenericResponse()
                 .setCode(0);
     }
 
+    @PostMapping("update")
+    private GenericResponse update(@RequestBody UserDto request, HttpSession httpSession) {
+        User updatedUser = userService.save(request, httpSession);
+        if (updatedUser != null) {
+            return new GenericResponse()
+                    .setCode(0);
+        } else {
+            return new GenericResponse()
+                    .setCode(40);
+        }
+    }
 }

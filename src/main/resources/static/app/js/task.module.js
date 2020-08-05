@@ -42,13 +42,14 @@ module.directive("task", function (TaskApi) {
             ngModel: '=',
             checked: '=',
             onDelete: '&',
-            aaa: '='
+            aaa: '=',
+            deletable: '='
         },
         link: function (scope, elem, attr) {
 
             scope.toggleStatus = function (task) {
                 TaskApi.setStatus({id: task.id, done: !task.done}, function (response) {
-                    if (response.code == 0) {
+                    if (response.code === 0) {
 
                     } else { // never execute
 

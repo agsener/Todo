@@ -12,6 +12,10 @@ module.factory("ProfileApi", function ($resource) {
         base64: {
           method: "GET",
           url: baseUrl + "/:uuid"
+        },
+        updateUser: {
+          method: "POST",
+          url: baseUrl + "/update"
         }
     });
 });
