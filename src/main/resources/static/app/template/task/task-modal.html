@@ -13,10 +13,14 @@
                       rows="10"
                       ng-model="task.description"></textarea>
         </div>
-        <div>
-            <label>Date</label><br />
-            <input type="text" datepicker="" ng-model="date" />
-        </div>
+        <datepicker date-format="dd-MM-yyyy" selector="form-control">
+            <div class="input-group">
+                <input class="form-control" placeholder="Choose a date" ng-model="task.dueDate"/>
+                <span class="input-group-addon" style="cursor: pointer">
+                    <i class="fa fa-lg fa-calendar"></i>
+                </span>
+            </div>
+        </datepicker>
     </form>
 </div>
 <div class="modal-footer">

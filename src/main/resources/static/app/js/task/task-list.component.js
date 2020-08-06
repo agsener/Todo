@@ -41,6 +41,7 @@ angular.module("task")
     .controller("TaskModalController", function($scope, $uibModalInstance){
         $scope.ok = function(){
             $uibModalInstance.close($scope.task);
+            //console.log($scope.task);
         };
 
         $scope.cancel = function(){
@@ -48,7 +49,8 @@ angular.module("task")
         };
 
         $scope.init = function(){
-            $scope.task = {};
+            $scope.task = {
+            };
         };
 
         $scope.init();

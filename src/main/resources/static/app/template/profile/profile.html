@@ -4,7 +4,7 @@
             <img class="rounded mx-auto d-block" ng-src="data:image/png;base64,{{base64}}" ng-dblclick="changePhoto()"/>
         </div>
         <div class="row">
-            <input type="file" ng-model="myfile" on-after-validate="onAfterValidateFunc" base-sixty-four-input>
+            <input id="img" type="file" ng-model="myfile" on-after-validate="onAfterValidateFunc" base-sixty-four-input style="display: none">
         </div>
         <br>
         <div class="form-group row">

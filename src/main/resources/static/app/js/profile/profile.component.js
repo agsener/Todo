@@ -29,6 +29,8 @@ angular.module("profile")
             $scope.changePhoto = function () {
                 console.log("cift tiklaninca calisan fonk");
 
+                angular.element("#img").click();
+
             };
 
             $scope.init = function () {

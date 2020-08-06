@@ -1,5 +1,6 @@
 package com.ags.todov2.model;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
 import lombok.Getter;
 import lombok.Setter;
 import lombok.experimental.Accessors;
@@ -36,7 +37,8 @@ public class Task extends Base {
 
     @Getter
     @Setter
-    private int endOfDay;
+    @JsonFormat(pattern="dd-MM-yyyy")
+    private Date dueDate;
 
     @Indexed
     @Getter

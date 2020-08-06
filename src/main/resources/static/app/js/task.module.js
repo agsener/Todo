@@ -1,5 +1,5 @@
 var module = angular.module("task",
-    ["ngResource"]);
+    ["ngResource", "720kb.datepicker"]);
 
 module.factory("TaskApi", function ($resource) {
     var baseUrl = "/task";
