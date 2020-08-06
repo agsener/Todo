@@ -3,11 +3,21 @@ angular.module("profile")
         templateUrl: "/app/template/profile/profile.html",
         controller: function ($scope, ProfileApi) {
 
-            $scope.profileFunc = function () {
+            $scope.onAfterValidateFunc = function (event, fileList) {
+                if ($scope.base64 === fileList[0].base64) {
+                    $scope.user.base64 = null;
+                } else {
+                    $scope.base64 = fileList[0].base64;
+                    $scope.user.base64 = $scope.base64;
+                }
+            };
+
+            $scope.saveProfile = function () {
                 userDto = {
                     username: $scope.user.username,
                     name: $scope.user.name,
                     surname: $scope.user.surname,
+                    base64: $scope.user.base64,
                 }
                 ProfileApi.updateUser(userDto, function (response) {
                     if (response.code === 0) {

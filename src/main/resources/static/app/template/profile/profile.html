@@ -3,6 +3,9 @@
         <div class="row">
             <img class="rounded mx-auto d-block" ng-src="data:image/png;base64,{{base64}}" ng-dblclick="changePhoto()"/>
         </div>
+        <div class="row">
+            <input type="file" ng-model="myfile" on-after-validate="onAfterValidateFunc" base-sixty-four-input>
+        </div>
         <br>
         <div class="form-group row">
             <label>Username</label>
@@ -17,7 +20,7 @@
             <input type="text" class="form-control" ng-model="user.surname">
         </div>
         <div class="row">
-            <button type="submit" class="btn btn-primary" ng-click="profileFunc()">Save</button>
+            <button type="submit" class="btn btn-primary" ng-click="saveProfile()">Save</button>
         </div>
     </div>
 </form>
