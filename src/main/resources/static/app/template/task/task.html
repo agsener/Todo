@@ -8,6 +8,9 @@
         </div>
         <p class="small">{{task.description}}</p>
     </div>
+    <div class="col-1">
+        <i class="fa fa-pencil-square-o" aria-hidden="true"></i>
+    </div>
     <div class="col-1" ng-if="deletable">
         <i class="fa fa-trash btn-danger hand" ng-click="removeTask(task.id)"></i>
     </div>
